@@ -26,16 +26,45 @@ public class MainActivity extends AppCompatActivity {
         addButton = (Button) findViewById(R.id.plus_button);
         minusButton = (Button) findViewById(R.id.minus_button);
 
+        quantityDisplay.setText("" + 0);
+        priceDisplay.setText("$" + 0);
+
         addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
+
                 String stringQuantity = quantityDisplay.getText().toString();
-                int numberQuantity = Integer.parseInt(stringQuantity);
-//                int newQuantity = numberQuantity + 1;
-                quantityDisplay.setText(numberQuantity);
+                int quantity = Integer.parseInt(stringQuantity);
+
+                quantity++;
+                quantityDisplay.setText("" + quantity);
+
+                priceCalculator(quantity);
+
+
             }
         });
 
+        minusButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                String stringQuantity = quantityDisplay.getText().toString();
+                int quantity = Integer.parseInt(stringQuantity);
+
+                if(quantity > 0) {
+                    quantity--;
+                    quantityDisplay.setText("" + quantity);
+
+                    priceCalculator(quantity);
+                }
+
+            }
+        });
+
+    }
+
+    public void priceCalculator(int quantity) {
+        double price = 2.5 * quantity;
+        priceDisplay.setText("$" + price);
     }
 
 
