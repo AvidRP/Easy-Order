@@ -1,5 +1,6 @@
 package com.example.android.easy_order;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         nameInput = (EditText) findViewById(R.id.name_edit_text);
 
-        quantityDisplay.setText("" + 0);
-        priceDisplay.setText("$" + 0);
+        quantityDisplay.setText("" + 2);
+        priceDisplay.setText("$" + 5);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -53,9 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
                 orderSummaryDisplay.setText("price");
 
-                quantity++;
+                if (quantity < 100) {
+                    quantity++;
 
-                displayQuantity(quantity);
+                    displayQuantity(quantity);
+                } else {
+                    Toast.makeText(MainActivity.this, "You cannot order more than 100 cups at a time", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -68,11 +74,13 @@ public class MainActivity extends AppCompatActivity {
                 String stringQuantity = quantityDisplay.getText().toString();
                 int quantity = Integer.parseInt(stringQuantity);
 
-                if(quantity > 0) {
+                if(quantity > 1) {
                     quantity--;
 
                     displayQuantity(quantity);
 
+                } else {
+                    Toast.makeText(MainActivity.this, "You cannot order less than 1 cup", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -129,6 +137,22 @@ public class MainActivity extends AppCompatActivity {
         boolean bchocolate = checkChocolate();
 
         String customerName = getName();
+
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL , new String[]{"coffeeshop@gmail.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Coffee Order for " + customerName);
+        i.putExtra(Intent.EXTRA_TEXT   , "Name: " + customerName + "\n" +
+                "Quantity: " + quantityDisplay.getText().toString() + "\n" +
+                "Whipped Cream: " + bwhippedCream + "\n" +
+                "Chocolate: " + bchocolate + "\n" +
+                "Total: $" + price + "\n" +
+                "Thank you!");
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(MainActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
 
         priceDisplay.setText("Name: " + customerName + "\n" +
                 "Quantity: " + quantityDisplay.getText().toString() + "\n" +
