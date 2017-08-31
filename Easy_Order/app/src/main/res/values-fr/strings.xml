@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">
+Commande facile</string>
+    <string name="toppings">GARNITURE</string>
+    <string name = "whipped_cream">Crème fouettée</string>
+    <string name = "chocolate">
+Chocolat</string>
+    <string name = "quantity">
+Quantité</string>
+    <string name="price">
+Prix</string>
+</resources>
