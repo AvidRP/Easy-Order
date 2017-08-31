@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Toppings"
+        android:text="@string/toppings"
         android:textAllCaps="true"
         android:layout_marginBottom="8dp"
         android:layout_gravity="center_horizontal"
@@ -31,7 +31,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Whipped Cream"
+        android:text="@string/whipped_cream"
         android:layout_gravity="center_horizontal"
         android:textSize="20sp"
         android:paddingLeft="16dp"
@@ -41,7 +41,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chocolate"
+        android:text="@string/chocolate"
         android:layout_gravity="center_horizontal"
         android:textSize="20sp"
         android:layout_marginBottom="16dp"
@@ -52,7 +52,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quantity"
+        android:text="@string/quantity"
         android:textAllCaps="true"
         android:layout_marginBottom="8dp"
         android:layout_gravity="center_horizontal"
@@ -93,7 +93,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="price"
+        android:text="@string/price"
         android:textAllCaps="true"
         android:layout_gravity="center_horizontal"
         android:textSize="20sp"
