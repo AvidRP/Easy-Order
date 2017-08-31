@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">
+आसान आदेश</string>
+    <string name="toppings">
+टपिंग</string>
+    <string name = "whipped_cream">फिटेको तर</string>
+    <string name = "chocolate">
+चकलेट</string>
+    <string name = "quantity">
+मात्रा</string>
+    <string name="price">
+मूल्य</string>
+</resources>
